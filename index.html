@@ -104,6 +104,56 @@
   .hero .scroll-hint::after{content:"↓";animation:bob 1.8s ease-in-out infinite;display:inline-block}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
+  /* ── orbiting avatar (hero visual) ── */
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .orbit-wrap{position:relative;width:min(420px,38vw);aspect-ratio:1;margin:0 auto;justify-self:center}
+  .orbit-glow{
+    position:absolute;inset:10%;border-radius:50%;
+    background:radial-gradient(circle,rgba(139,92,246,.28),rgba(236,72,153,.10) 55%,transparent 72%);
+    filter:blur(8px);animation:breathe 6s ease-in-out infinite;
+  }
+  @keyframes breathe{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.06);opacity:1}}
+  .orbit-center{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:42%;aspect-ratio:1;border-radius:50%;padding:5px;z-index:2;
+    background:conic-gradient(from 0deg,var(--indigo),var(--violet),var(--pink),var(--indigo));
+    animation:huespin 10s linear infinite;
+    box-shadow:0 0 50px rgba(139,92,246,.45);
+  }
+  @keyframes huespin{to{filter:hue-rotate(360deg)}}
+  .orbit-center img{
+    width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;
+    background:var(--night-2);
+  }
+  .orbit{position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(163,159,196,.22)}
+  .ring-1{inset:17%;animation:spin 26s linear infinite}
+  .ring-2{inset:0;animation:spin 44s linear infinite reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .sat{position:absolute;inset:0;transform:rotate(var(--a))}
+  .chip-ic{
+    position:absolute;top:0;left:50%;display:grid;place-items:center;
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(20,18,50,.92);border:1px solid var(--line);
+    box-shadow:0 6px 22px rgba(0,0,0,.45);
+    transform:translate(-50%,-50%) rotate(calc(var(--a) * -1));
+  }
+  .ring-1 .chip-ic{animation:spinrev1 26s linear infinite}
+  .ring-2 .chip-ic{animation:spinrev2 44s linear infinite}
+  @keyframes spinrev1{
+    from{transform:translate(-50%,-50%) rotate(calc(var(--a) * -1))}
+    to{transform:translate(-50%,-50%) rotate(calc(var(--a) * -1 - 360deg))}
+  }
+  @keyframes spinrev2{
+    from{transform:translate(-50%,-50%) rotate(calc(var(--a) * -1))}
+    to{transform:translate(-50%,-50%) rotate(calc(var(--a) * -1 + 360deg))}
+  }
+  .chip-ic img{width:24px;height:24px;display:block}
+
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .orbit-wrap{width:min(320px,78vw);order:-1}
+  }
+
   /* ── about / fast facts ── */
   .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
   .fact{
@@ -217,18 +267,45 @@
 
 <!-- ════════ HERO ════════ -->
 <section class="hero" id="top">
-  <p class="hello"><span>~/tejal</span> $ whoami</p>
-  <h1>Tejal Patel<br/><span class="grad">builds software</span><br/>that ships.</h1>
-  <p class="tag">
-    Software engineer working across <b>full-stack, AI, and cloud</b> —
-    from Spring Boot microservices to an AI interview coach on Azure.
-    MS in Computer Science @ Seattle University, <b>graduating June 2026</b>
-    and open to new grad SWE roles.
-  </p>
-  <div class="cta-row">
-    <a class="btn btn-primary" href="#projects">See my work</a>
-    <a class="btn btn-ghost" href="https://www.linkedin.com/in/tejalppatel/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn btn-ghost" href="https://github.com/tejalpatel2099" target="_blank" rel="noopener">GitHub</a>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="hello"><span>~/tejal</span> $ whoami</p>
+      <h1>Tejal Patel<br/><span class="grad">builds software</span><br/>that ships.</h1>
+      <p class="tag">
+        Software engineer working across <b>full-stack, AI, and cloud</b> —
+        from Spring Boot microservices to an AI interview coach on Azure.
+        MS in Computer Science @ Seattle University, <b>graduating June 2026</b>
+        and open to new grad SWE roles.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#projects">See my work</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/tejalppatel/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/tejalpatel2099" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <!-- orbiting avatar: replace the img src with your own photo (e.g. profile.jpg in the repo) -->
+    <div class="orbit-wrap" aria-hidden="true">
+      <div class="orbit-glow"></div>
+      <div class="orbit-center">
+        <img src="profile.jpg"
+             onerror="this.onerror=null;this.src='https://api.dicebear.com/9.x/lorelei/svg?seed=TejalP&backgroundColor=141232&hairColor=2c1b18'"
+             alt="Tejal Patel" />
+      </div>
+      <div class="orbit ring-1">
+        <span class="sat" style="--a:0deg"><span class="chip-ic r1"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React"/></span></span>
+        <span class="sat" style="--a:90deg"><span class="chip-ic r1"><img src="https://cdn.simpleicons.org/spring/6DB33F" alt="Spring"/></span></span>
+        <span class="sat" style="--a:180deg"><span class="chip-ic r1"><img src="https://cdn.simpleicons.org/cplusplus/659AD2" alt="C++"/></span></span>
+        <span class="sat" style="--a:270deg"><span class="chip-ic r1"><img src="https://cdn.simpleicons.org/python/FFD43B" alt="Python"/></span></span>
+      </div>
+      <div class="orbit ring-2">
+        <span class="sat" style="--a:30deg"><span class="chip-ic r2"><img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="AI / ML"/></span></span>
+        <span class="sat" style="--a:102deg"><span class="chip-ic r2"><img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes"/></span></span>
+        <span class="sat" style="--a:174deg"><span class="chip-ic r2"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"/></span></span>
+        <span class="sat" style="--a:246deg"><span class="chip-ic r2"><img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="PostgreSQL"/></span></span>
+        <span class="sat" style="--a:318deg"><span class="chip-ic r2"><img src="https://cdn.simpleicons.org/dotnet/A685FF" alt=".NET"/></span></span>
+      </div>
+    </div>
   </div>
   <p class="scroll-hint">scroll</p>
 </section>
