@@ -1,583 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Tejal Patel Portfolio</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-
-
-
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tejal Patel — Software Engineer</title>
+<meta name="description" content="Tejal Patel — Software engineer building full-stack, AI, and cloud products. MS in Computer Science, Seattle University. Open to new grad SWE roles." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
-
-/*======================================
-//--//-->   ABOUT
-======================================*/
-
-.about-mf .box-shadow-full {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.about-mf .about-img {
-  margin-bottom: 2rem;
-}
-
-.about-mf .about-img img {
-  margin-left: 10px;
-}
-
-
-.skill-mf .progress {
-  /* background-color: #cde1f8; */
-  margin: .5rem 0 1.2rem 0;
-  border-radius: 0;
-  height: .7rem;
-}
-
-.skill-mf .progress .progress-bar {
-  height: .7rem;
-  background-color: #ffbd39;
-}
-
-
-/* Animation styles */
-#typing-animation {
-  position: relative;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 3s steps(20, end) infinite;
-}
-
-#typing-animation:before {
-  content: "";
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #ccc;
-  animation: typing-cursor 0.5s ease-in-out infinite;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
+  :root{
+    --night:#0b0a1c;
+    --night-2:#141232;
+    --ink:#eceaf6;
+    --ink-dim:#a39fc4;
+    --indigo:#6366f1;
+    --violet:#8b5cf6;
+    --pink:#ec4899;
+    --glass:rgba(139,92,246,.08);
+    --line:rgba(163,159,196,.18);
+    --radius:18px;
+    --max:1080px;
   }
-  to {
-    width: 100%;
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--night);
+    color:var(--ink);
+    font-family:'Figtree',system-ui,sans-serif;
+    font-size:17px;line-height:1.65;
+    overflow-x:hidden;
   }
-}
+  ::selection{background:var(--violet);color:#fff}
 
-@keyframes typing-cursor {
-  from {
-    width: 5px;
+  /* ── ambient background: aurora + bubble canvas ── */
+  .aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+    radial-gradient(900px 600px at 15% -10%, rgba(99,102,241,.22), transparent 60%),
+    radial-gradient(800px 600px at 95% 10%, rgba(236,72,153,.14), transparent 60%),
+    radial-gradient(700px 700px at 50% 110%, rgba(139,92,246,.16), transparent 60%),
+    var(--night);}
+  #bubbles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+  /* ── nav ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(11,10,28,.55);
+    border-bottom:1px solid var(--line);
   }
-  to {
-    width: 0;
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--ink);text-decoration:none}
+  .logo b{color:var(--pink)}
+  .nav-links{display:flex;gap:26px;list-style:none}
+  .nav-links a{color:var(--ink-dim);text-decoration:none;font-size:14.5px;font-weight:500;transition:color .2s}
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--ink)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:4px}
+
+  /* ── shared section bits ── */
+  section{max-width:var(--max);margin:0 auto;padding:96px 24px}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;
+    color:var(--pink);display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;
   }
-}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--pink);display:inline-block}
+  h2{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+    font-size:clamp(28px,4vw,40px);line-height:1.15;margin-bottom:34px;
+  }
 
+  /* ── hero ── */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:120px}
+  .hero .hello{font-family:'JetBrains Mono',monospace;color:var(--ink-dim);font-size:15px;margin-bottom:18px}
+  .hero .hello span{color:var(--violet)}
+  .hero h1{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(52px,9vw,108px);line-height:.98;letter-spacing:-.02em;
+    margin-bottom:22px;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(92deg,var(--indigo),var(--violet) 45%,var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.tag{max-width:560px;color:var(--ink-dim);font-size:clamp(17px,2vw,20px);margin-bottom:36px}
+  .hero p.tag b{color:var(--ink);font-weight:600}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:999px;font-weight:600;font-size:15.5px;
+    text-decoration:none;transition:transform .2s,box-shadow .2s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{
+    color:#fff;background:linear-gradient(92deg,var(--violet),var(--pink));
+    box-shadow:0 8px 30px rgba(236,72,153,.28);
+  }
+  .btn-primary:hover{box-shadow:0 12px 36px rgba(236,72,153,.4)}
+  .btn-ghost{color:var(--ink);border:1px solid var(--line);background:var(--glass)}
+  .btn-ghost:hover{border-color:var(--violet)}
+  .hero .scroll-hint{
+    margin-top:64px;font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    color:var(--ink-dim);display:flex;align-items:center;gap:10px;
+  }
+  .hero .scroll-hint::after{content:"↓";animation:bob 1.8s ease-in-out infinite;display:inline-block}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
-/* project image zoom effect */
+  /* ── about / fast facts ── */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+  .fact{
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--glass);padding:22px;
+  }
+  .fact .k{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-dim);letter-spacing:.06em;margin-bottom:8px}
+  .fact .v{font-weight:600;font-size:16.5px}
+  .about-copy{max-width:720px;color:var(--ink-dim);margin-bottom:36px}
+  .about-copy b{color:var(--ink);font-weight:600}
 
-.zoom-effect {
-  overflow: hidden;
-  transition: transform 0.3s ease-out;
-}
+  /* ── projects ── */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .proj{
+    position:relative;border:1px solid var(--line);border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(20,18,50,.75),rgba(11,10,28,.65));
+    padding:30px;display:flex;flex-direction:column;gap:14px;
+    transition:transform .25s,border-color .25s,box-shadow .25s;
+  }
+  .proj:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.55);box-shadow:0 18px 50px rgba(99,102,241,.18)}
+  .proj.feature{grid-column:1/-1;background:
+    radial-gradient(600px 300px at 85% 0%,rgba(236,72,153,.12),transparent 60%),
+    linear-gradient(180deg,rgba(20,18,50,.85),rgba(11,10,28,.7));}
+  .proj .kind{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--pink);letter-spacing:.08em}
+  .proj h3{font-family:'Bricolage Grotesque',sans-serif;font-size:23px;font-weight:700}
+  .proj.feature h3{font-size:clamp(24px,3vw,32px)}
+  .proj p{color:var(--ink-dim);font-size:15.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px}
+  .chip{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink);
+    border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:rgba(11,10,28,.5);
+  }
+  .proj-links{display:flex;gap:16px}
+  .proj-links a{color:var(--violet);font-weight:600;font-size:14.5px;text-decoration:none}
+  .proj-links a:hover{color:var(--pink)}
 
-.zoom-effect:hover {
-  transform: scale(1.1);
-}
+  /* ── experience ── */
+  .timeline{position:relative;margin-left:8px;padding-left:34px;border-left:1px solid var(--line)}
+  .t-item{position:relative;padding-bottom:42px}
+  .t-item:last-child{padding-bottom:0}
+  .t-item::before{
+    content:"";position:absolute;left:-40px;top:6px;width:11px;height:11px;border-radius:50%;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    box-shadow:0 0 0 5px rgba(139,92,246,.15);
+  }
+  .t-item .when{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-dim);margin-bottom:6px}
+  .t-item h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700}
+  .t-item .org{color:var(--violet);font-weight:600;font-size:15.5px;margin-bottom:8px}
+  .t-item p{color:var(--ink-dim);font-size:15.5px;max-width:640px}
 
+  /* ── skills ── */
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .sgroup{border:1px solid var(--line);border-radius:var(--radius);background:var(--glass);padding:24px}
+  .sgroup h3{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;color:var(--pink);margin-bottom:16px;font-weight:500}
+  .sgroup ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .sgroup li{
+    font-size:14px;font-weight:500;padding:6px 13px;border-radius:999px;
+    border:1px solid var(--line);background:rgba(11,10,28,.5);
+  }
 
+  /* ── contact ── */
+  .contact-card{
+    border:1px solid var(--line);border-radius:24px;text-align:center;
+    padding:clamp(40px,7vw,72px) 28px;
+    background:
+      radial-gradient(500px 260px at 50% 0%,rgba(139,92,246,.16),transparent 70%),
+      linear-gradient(180deg,rgba(20,18,50,.8),rgba(11,10,28,.7));
+  }
+  .contact-card h2{margin-bottom:14px}
+  .contact-card p{color:var(--ink-dim);max-width:520px;margin:0 auto 32px}
+  footer{
+    max-width:var(--max);margin:0 auto;padding:28px 24px 40px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    color:var(--ink-dim);font-size:13.5px;border-top:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  /* ── reveal on scroll ── */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:780px){
+    .nav-links{display:none}
+    .proj-grid{grid-template-columns:1fr}
+    section{padding:72px 20px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+    #bubbles{display:none}
+  }
 </style>
+</head>
+<body>
 
+<div class="aurora" aria-hidden="true"></div>
+<canvas id="bubbles" aria-hidden="true"></canvas>
 
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	  
-	  
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Tejal  Patel</a>
-	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#top">tejal<b>.</b>patel<b>()</b></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-	  <section id="home-section" class="hero">
-		  <div class="home-slider  owl-carousel">
-	       <div class="slider-item ">
-	      	<div class="overlay"></div>
-	         <div class="container">
-	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_1.png);">
-	          	 <div class="overlay"></div>
-	          	</div>
-		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-		          	<div class="text">
-		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm <span>Tejal Patel</span></h1>
+<!-- ════════ HERO ════════ -->
+<section class="hero" id="top">
+  <p class="hello"><span>~/tejal</span> $ whoami</p>
+  <h1>Tejal Patel<br/><span class="grad">builds software</span><br/>that ships.</h1>
+  <p class="tag">
+    Software engineer working across <b>full-stack, AI, and cloud</b> —
+    from Spring Boot microservices to an AI interview coach on Azure.
+    MS in Computer Science @ Seattle University, <b>graduating June 2026</b>
+    and open to new grad SWE roles.
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#projects">See my work</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/tejalppatel/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn btn-ghost" href="https://github.com/tejalpatel2099" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <p class="scroll-hint">scroll</p>
+</section>
 
-						<!-- Element to contain animated typing -->
-						<span id="typing-animation"></span>
+<!-- ════════ ABOUT ════════ -->
+<section id="about" class="reveal">
+  <p class="eyebrow">about</p>
+  <h2>Engineer first, generalist by curiosity.</h2>
+  <p class="about-copy">
+    I've built healthcare mobile apps at <b>Medfilo</b>, frontend at <b>Referrio</b>,
+    and now teach <b>Cloud Computing</b> (Kubernetes, Docker, AWS) as a TA while
+    finishing my master's. I like systems that are honest about their trade-offs:
+    clean architecture, tested code, and UIs people don't need a manual for.
+  </p>
+  <div class="facts">
+    <div class="fact"><div class="k">EDUCATION</div><div class="v">MS Computer Science, Seattle University · June 2026</div></div>
+    <div class="fact"><div class="k">FOCUS</div><div class="v">Full-stack · Backend · AI & Cloud</div></div>
+    <div class="fact"><div class="k">CURRENTLY</div><div class="v">TA — Cloud Computing · Shipping MockUp</div></div>
+    <div class="fact"><div class="k">LOOKING FOR</div><div class="v">New Grad SWE 2026</div></div>
+  </div>
+</section>
 
-						<script>
+<!-- ════════ PROJECTS ════════ -->
+<section id="projects" class="reveal">
+  <p class="eyebrow">selected work</p>
+  <h2>Projects I'm proud of.</h2>
+  <div class="proj-grid">
 
-						// Initialize the typing animation
-						const typingAnimationElement = document.getElementById('typing-animation');
-
-						// Create an array of typing text
-						const typingTexts = [
-						'Seattle University Student ',
-						'Web Developer ',
-						'Software Engineer  ',
-						];
-
-						// Create a function to display the typing animation for a given text
-						function playTypingAnimation(text) {
-						// Loop through each character and add it to the element
-						for (let i = 0; i < text.length; i++) {
-							setTimeout(() => {
-							typingAnimationElement.textContent += text[i];
-							}, i * 200); // Increase the delay to slow down the typing animation
-						}
-
-						// Once the animation is complete, reset the text and start over
-						setTimeout(() => {
-							typingAnimationElement.textContent = '';
-							playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-						}, text.length * 200);
-						}
-
-						// Start the typing animation loop
-						playTypingAnimation(typingTexts[0]);
-
-						</script>
-
-						<br>
-						<br>
-			            <h2>Software Developer</h2>
-						<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
-						<!-- <br> -->
-			            <p> 
-							<a href="https://www.linkedin.com/in/tejal-patel-81a5ba17b/" class="btn btn-white btn-outline-white py-3 px-4">Linkedin</a></p>
-		            </div>
-		          </div>
-	        	</div>
-	        </div>
-	      </div>
-		</div>
-    </section>
-
-
-
-    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-    	<div class="container">
-			<div class="row">
-				<div class="row d-flex align-items-stretch">
-				<!-- <div class="row d-flex"> -->
-					<div class="col-md-6 col-lg-5 d-flex">
-						<div class="img-about img d-flex align-items-stretch">
-							<div class="overlay">
-								<div class="row">
-									<div class="col-sm-6 col-md-5">
-									  <div class="about-img">
-										<img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
-									  </div>
-									</div>
-									<!-- Details next to profile image -->
-									<div class="col-sm-6 col-md-7">
-									  <div class="about-info">
-										<p><span class="title-s">Name: </span> <span>Tejal Patel</span></p>
-										<p><span class="title-s">Job Role: </span> <span>Software Developer</span></p>
-										<p><span class="title-s">Experience: </span> <span>1 year</span></p>
-										
-									  </div>
-									</div>
-								  </div>
-
-								<div class="skill-mf">
-									<p class="title-s">Skills</p>
-									<span>SQL</span> <span class="pull-right">70%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="95" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>C++</span> <span class="pull-right">95%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>PYTHON</span> <span class="pull-right">60%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="90" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Html, Css, JS </span> <span class="pull-right">95%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Web Development</span> <span class="pull-right">90%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="80" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-						<div class="row justify-content-start pb-3">
-							<div class="col-md-12 heading-section ftco-animate">
-								
-								<h1 class="big">About</h1>
-								<h2 class="mb-4">About Me</h2>
-								
-								<p>I am a Computer Science student at Seattle University with a strong academic background and over a year of
-									 experience in web development. I am currently pursuing a graduate certificate at Seattle University and hold
-									  a bachelor's degree from Savitribai Pune University. My expertise includes programming, web development, 
-									  systems programming, and networking. I have a proven track record of leading successful projects 
-									  and earning multiple certifications. 
-									I am passionate about technology, teamwork, and making a positive impact through my work.</p>
-								<ul class="about-info mt-4 px-md-0 px-2">
-									<li class="d-flex"><span>Profile:</span> <span>Software Developer</span></li>
-									<li class="d-flex"><span>Education:</span> <span>Masters in Computer science</span></li>
-									<li class="d-flex"><span>Language:</span> <span>English, Hindi, Marathi, Gujarati</span></li>
-									
-									<li class="d-flex"><span>Skills:</span> <span>Programming: - C++, JavaScript, Python, SQL
-										<p>Operating Systems: MacOS, Windows, Ubuntu, Linux</p>
-										<p>Frameworks: Node.js, React.js,</p>
-										<p>Web Tech/Tools: HTML5, CSS3, JS, Typescript, IntelliJ, Git, Postman, VS Code, JSON, XML, Docker Open Stack</p>
-										<p>Distributed Systems: Unix/Linux, Networking</p>
-										<p>Database: DynamoDB, MySQL, MongoDB</p>
-										<p>Others: DSA, OOP, Design Patterns, Android Studio,</p> </span></li>
-									<li class="d-flex"><span>Interest:</span> <span>Traveling, Travel Photography, Basketball</span></li>
-									
-								</ul>
-							</div>
-						</div>
-
-
-						<div class="counter-wrap ftco-animate d-flex mt-md-3">
-							<div class="text">
-								<p class="mb-4">
-									
-									<span>&nbsp; Projects completed</span>
-								</p>
-								<p><a href="https://www.linkedin.com/in/tejal-patel-81a5ba17b/" class="btn btn-primary py-3 px-3">LinkedIn</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    </section>
-
-
-
-	
-    <section class="ftco-section ftco-no-pb" id="resume-section">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Resume</h1>
-            <h2 class="mb-4">Resume</h2>
-            <p>I am a Computer Science student at Seattle University with over a year of web development experience. 
-				I hold a bachelor's degree from Savitribai Pune University and am pursuing a graduate certificate at Seattle University. My skills include programming, systems programming, and networking. I have a strong record of leading successful projects and earning multiple certifications.
-				 I'm passionate about technology, teamwork, and creating positive impacts.</p>
-          </div>
-        </div>
-
-		<div class="row">
-			<h1 class="big-4">Experience</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-		<div class="row">
-				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
-						<span class="date">Jan 2022-Nov 2022</span>
-						<h2>Web Developer</h2>
-						<span class="position">Suyash Group Of Industries</span>
-							<ul>
-								<li>Developed dynamic websites using C++, HTML, CSS, JavaScript, and PHP, reducing load times and enhancing user experience. Spearheaded front-end development for major projects, serving as lead designer and increasing user engagement.
-									 Collaborated with a team to deliver significant projects, fostering a synergistic work environment.</li>
-								<li>Designed and implemented web pages tailored to company branding, improving client satisfaction.</li>
-								<li>Performed troubleshooting and optimization, reducing website downtime.</li>
-								<li>Facilitated weekly meetings to strategize front-end design, leading to innovative web page developments.</li>
-							</ul>
-						</p>
-					</div>
-
-				</div>
-			</div>
-
-		<br>
-		<br>
-
-		<div class="row">
-			<h1 class="big-4">Education</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-			<div class="row">
-    			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2019-2022</span>
-    					<h2>Bachelor of Engineering</h2>
-    					<span class="position">Savitribai Pune University</span>
-    					<p class="mt-4">Grade: First class distinction.</p>
-    				</div>
-    			</div>
-
-    			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2023-2025</span>
-    					<h2>Master’s in Computer Science|</h2>
-    					<span class="position">Seattle University</span>
-    					<p class="mt-4">Grade: First class distinction.</p>
-    				</div>
-				</div>
-    		</div>
-    	</div>
-    </section>
-
-
-    <section class="ftco-section" id="project-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-5">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Projects</h1>
-            <h2 class="mb-4">Projects</h2>
-            <p>Below are the sample projects on  C++, Web Development.</p>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="https://github.com/rishabhnmishra/SQL_Music_Store_Analysis/blob/main/Music_Store_Query.sql" class="block-20 zoom-effect" style="background-image: url('images/proj_1.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/rishabhnmishra/SQL_Music_Store_Analysis/blob/main/Music_Store_Query.sql">Price Comparator</a></h3>
-                <p>Developed a real-time Price Comparator project using Scrapy technology for data acquisition from various e-commerce websites. Utilized Beautiful Soup 4 and Tkinter to design and implement a data acquisition system, enabling effective price comparison.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="https://github.com/rishabhnmishra/Python_Diwali_Sales_Analysis/blob/main/Diwali_Sales_Analysis.ipynb" class="block-20 zoom-effect" style="background-image: url('images/proj_2.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/rishabhnmishra/Python_Diwali_Sales_Analysis/blob/main/Diwali_Sales_Analysis.ipynb">Book Recommendation System</a></h3>
-                <p>Developed a book recommendation system using user ratings and similarities
-					•
-					Implemented the system using C++ and handled dynamic memory allocation for efficient data storage.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry">
-              <a href="https://github.com/rishabhnmishra/Madhav_Store_Analysis_PowerBI/blob/main/Madhav%20Store%20dashboard.jpg" class="block-20 zoom-effect" style="background-image: url('images/proj_3.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/rishabhnmishra/Madhav_Store_Analysis_PowerBI/blob/main/Madhav%20Store%20dashboard.jpg">Priority Queue System for Hospital Triage</a></h3>
-                <p>Created a priority queue system for a hospital emergency room to manage patient triage. Implemented a command-line interface supporting commands to add, peek, remove, list, load, and help.
-					Developed the Patient class to manage patient details and priority, and the PatientPriorityQueue class to maintain patients in heap order. Used C++ to handle dynamic memory allocation and recursive algorithms to maintain heap order.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-	<br>
-
-	  </div>
-    </section>
-
-	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
-      <div class="container">
-		<div class="row d-md-flex align-items-center">
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="10">0</strong>
-                <span>Achievements</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="5">0</strong>
-                <span>Projects</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="500">0</strong>
-                <span>Cups of coffee</span>
-              </div>
-            </div>
-          </div>
-        </div>
+    <article class="proj feature">
+      <span class="kind">FEATURED · SAAS · TEAM PROJECT</span>
+      <h3>MockUp — AI Mock Interview Coach</h3>
+      <p>
+        A SaaS platform that runs realistic AI-powered mock interviews: voice answers in,
+        structured feedback out. Built the product end-to-end with my team — OAuth sign-in
+        (Google &amp; LinkedIn), voice capture via the Web Speech API, GPT-4o mini for
+        question generation and feedback, and a dual-database design (MySQL on Azure +
+        MongoDB Atlas). Deployed on Azure App Service.
+      </p>
+      <div class="chips">
+        <span class="chip">Blazor Server</span><span class="chip">ASP.NET Core 8</span>
+        <span class="chip">C#</span><span class="chip">OpenAI GPT-4o mini</span>
+        <span class="chip">MySQL · Azure</span><span class="chip">MongoDB Atlas</span>
+        <span class="chip">OAuth 2.0</span><span class="chip">Azure App Service</span>
       </div>
-	
-	  <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
-			<!-- <div class="container"> -->
-				<div class="row justify-content-center">
-					<div class="col-md-7 ftco-animate text-center">
-						<h2>More projects on<span> Github  </span> </h2>
-						<div class="heading"> <h4> I love to solve coding problems. </h4>
-						<br>
-						<p><a href="https://github.com/Tejalpatel2099" class="btn btn-primary py-3 px-5">GitHub</a></p>
-						</div>
-					</div>
-				</div>
-			<!-- </div> -->
-		</div>
-	</section>
+    </article>
 
+    <article class="proj">
+      <span class="kind">BACKEND · DISTRIBUTED</span>
+      <h3>Credify</h3>
+      <p>Cloud-native credit platform built as event-driven microservices — async messaging with Kafka, containerized and orchestrated on Kubernetes.</p>
+      <div class="chips">
+        <span class="chip">Spring Boot</span><span class="chip">Kafka</span>
+        <span class="chip">Kubernetes</span><span class="chip">Docker</span>
+      </div>
+    </article>
 
+    <article class="proj">
+      <span class="kind">FULL-STACK</span>
+      <h3>StreamHub</h3>
+      <p>Streaming platform composed of three Spring Boot microservices with a React + Vite frontend and an admin analytics dashboard charted with Recharts.</p>
+      <div class="chips">
+        <span class="chip">Spring Boot</span><span class="chip">React + Vite</span>
+        <span class="chip">Recharts</span><span class="chip">MySQL</span>
+      </div>
+    </article>
 
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-      <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>Below are the details to reach out to me!</p>
-          </div>
-        </div>
+    <article class="proj">
+      <span class="kind">AI / ML</span>
+      <h3>RAG Agent</h3>
+      <p>Retrieval-augmented generation pipeline for grounded LLM answers over custom documents — embeddings stored and searched with pgvector.</p>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">pgvector</span>
+        <span class="chip">PostgreSQL</span><span class="chip">LLM APIs</span>
+      </div>
+    </article>
 
-        <div class="row d-flex contact-info mb-5">
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-map-signs"></span>
-          		</div>
-          		<h3 class="mb-4">Address</h3>
-	            <p>Seattle, USA</p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-phone2"></span>
-          		</div>
-          		<h3 class="mb-4">Contact Number</h3>
-	            <p><a href="tel://0101010101">+ 0 101 0101 101</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-paper-plane"></span>
-          		</div>
-          		<h3 class="mb-4">Email Address</h3>
-	            <p><a href="mailto:info@yoursite.com">tejalpatel2099@gmail.com</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-github"></span>
-          		</div>
-          		<h3 class="mb-4">GitHub</h3>
-	            <p><a href="https://github.com/Tejalpatel2099">Github Link</a></p>
-	          </div>
-          </div>
+    <article class="proj">
+      <span class="kind">SYSTEMS · C++</span>
+      <h3>Redis-Style Key-Value Store</h3>
+      <p>In-memory key-value store written from scratch in C++ — socket networking, command parsing, and the core data structures underneath.</p>
+      <div class="chips">
+        <span class="chip">C++</span><span class="chip">Sockets</span>
+        <span class="chip">Data Structures</span>
+      </div>
+    </article>
 
-		  <div class="container">
-			<br>
-			<br>
-				<br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-					  <li class="ftco-animate normal-txt">Find me on  </li>
-					  <li class="ftco-animate"><a href="https://www.linkedin.com/in/tejal-patel-81a5ba17b/"><span class="icon-linkedin"></span></a></li>  
-				    
-					</ul>
-				<br>
-		   </div>
-   </div>
- </section>
+    <article class="proj">
+      <span class="kind">API DESIGN</span>
+      <h3>Image Transformation API</h3>
+      <p>Async, job-based REST API for image processing with a full automated test suite — designed and documented before a line of code was written.</p>
+      <div class="chips">
+        <span class="chip">FastAPI</span><span class="chip">Pillow</span>
+        <span class="chip">Python</span><span class="chip">pytest</span>
+      </div>
+    </article>
 
+  </div>
+</section>
 
- 
-	
-    <footer class="ftco-footer ftco-section">
-		<div class="container">
-		  <div class="row">
-			<div class="col-md-12 text-center">
-  
-			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
+<!-- ════════ EXPERIENCE ════════ -->
+<section id="experience" class="reveal">
+  <p class="eyebrow">experience</p>
+  <h2>Where I've worked.</h2>
+  <div class="timeline">
+    <div class="t-item">
+      <p class="when">Mar 2026 — Jun 2026</p>
+      <h3>Teaching Assistant, Cloud Computing</h3>
+      <p class="org">Seattle University</p>
+      <p>Supporting a graduate cloud computing course — helping students get hands-on with Kubernetes, Docker, and AWS, from container fundamentals to deployments.</p>
+    </div>
+    <div class="t-item">
+      <p class="when">Internship</p>
+      <h3>Software Engineer Intern</h3>
+      <p class="org">Medfilo</p>
+      <p>Built healthcare mobile app features with React Native on the front and Node.js/Express services behind it.</p>
+    </div>
+    <div class="t-item">
+      <p class="when">Internship</p>
+      <h3>Frontend Engineer Intern</h3>
+      <p class="org">Referrio</p>
+      <p>Developed and refined React.js frontend features for a referral platform, focused on clean, reusable components.</p>
+    </div>
+    <div class="t-item">
+      <p class="when">Expected Jun 2026</p>
+      <h3>MS, Computer Science</h3>
+      <p class="org">Seattle University</p>
+      <p>Graduate coursework spanning software architecture, cloud computing, and distributed systems.</p>
+    </div>
+  </div>
+</section>
 
+<!-- ════════ SKILLS ════════ -->
+<section id="skills" class="reveal">
+  <p class="eyebrow">toolbox</p>
+  <h2>What I build with.</h2>
+  <div class="skill-groups">
+    <div class="sgroup"><h3>LANGUAGES</h3>
+      <ul><li>C++</li><li>Java</li><li>Python</li><li>C#</li><li>TypeScript</li><li>JavaScript</li><li>SQL</li></ul>
+    </div>
+    <div class="sgroup"><h3>BACKEND</h3>
+      <ul><li>Spring Boot</li><li>ASP.NET Core</li><li>FastAPI</li><li>Node.js</li><li>Express</li><li>REST APIs</li></ul>
+    </div>
+    <div class="sgroup"><h3>FRONTEND</h3>
+      <ul><li>React</li><li>Blazor</li><li>React Native</li><li>HTML/CSS</li><li>Tailwind</li></ul>
+    </div>
+    <div class="sgroup"><h3>DATA</h3>
+      <ul><li>PostgreSQL</li><li>MySQL</li><li>MongoDB</li><li>Redis</li><li>pgvector</li></ul>
+    </div>
+    <div class="sgroup"><h3>CLOUD &amp; DEVOPS</h3>
+      <ul><li>Azure</li><li>AWS</li><li>Kubernetes</li><li>Docker</li><li>Kafka</li><li>Git &amp; CI</li></ul>
+    </div>
+    <div class="sgroup"><h3>AI</h3>
+      <ul><li>OpenAI APIs</li><li>RAG pipelines</li><li>Embeddings</li><li>LLM integration</li></ul>
+    </div>
+  </div>
+</section>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<!-- ════════ CONTACT ════════ -->
+<section id="contact" class="reveal">
+  <div class="contact-card">
+    <p class="eyebrow" style="justify-content:center">contact</p>
+    <h2>Let's build something together.</h2>
+    <p>I'm interviewing for new grad software engineer roles starting 2026.
+       If my work looks like a fit for your team, I'd love to talk.</p>
+    <div class="cta-row" style="justify-content:center">
+      <a class="btn btn-primary" href="mailto:tejalpatel2099@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/tejalppatel/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/tejalpatel2099" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
 
+<footer>
+  <span>© 2026 Tejal Patel</span>
+  <span>designed &amp; built by me · deployed on Vercel</span>
+</footer>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  
-  <script src="js/main.js"></script>
-    
-  </body>
+<script>
+/* ── floating bubbles background ── */
+(function(){
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+  const cv = document.getElementById('bubbles');
+  const ctx = cv.getContext('2d');
+  let W, H, bubbles = [], mouse = {x:.5, y:.5};
+
+  const PALETTE = [
+    [99,102,241],   // indigo
+    [139,92,246],   // violet
+    [236,72,153],   // pink
+  ];
+
+  function resize(){
+    W = cv.width  = innerWidth  * devicePixelRatio;
+    H = cv.height = innerHeight * devicePixelRatio;
+    cv.style.width = innerWidth + 'px';
+    cv.style.height = innerHeight + 'px';
+  }
+  resize();
+  addEventListener('resize', resize);
+  addEventListener('pointermove', e => {
+    mouse.x = e.clientX / innerWidth;
+    mouse.y = e.clientY / innerHeight;
+  });
+
+  const COUNT = Math.min(26, Math.floor(innerWidth / 50));
+  for (let i = 0; i < COUNT; i++){
+    bubbles.push({
+      x: Math.random(),
+      y: Math.random(),
+      r: (8 + Math.random()*34) * devicePixelRatio,
+      speed: .0002 + Math.random()*.0006,
+      sway: Math.random()*Math.PI*2,
+      swaySpeed: .003 + Math.random()*.008,
+      depth: .3 + Math.random()*.7,
+      c: PALETTE[i % PALETTE.length],
+    });
+  }
+
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for (const b of bubbles){
+      b.y -= b.speed;
+      b.sway += b.swaySpeed;
+      if (b.y < -0.08){ b.y = 1.08; b.x = Math.random(); }
+      const px = (b.x + Math.sin(b.sway)*.015 + (mouse.x-.5)*.04*b.depth) * W;
+      const py = (b.y + (mouse.y-.5)*.03*b.depth) * H;
+      const [r,g,bl] = b.c;
+      const grad = ctx.createRadialGradient(px-b.r*.35, py-b.r*.35, b.r*.1, px, py, b.r);
+      grad.addColorStop(0, `rgba(${r},${g},${bl},${.5*b.depth})`);
+      grad.addColorStop(.6, `rgba(${r},${g},${bl},${.16*b.depth})`);
+      grad.addColorStop(1, `rgba(${r},${g},${bl},0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(px, py, b.r, 0, Math.PI*2);
+      ctx.fill();
+      // rim highlight
+      ctx.strokeStyle = `rgba(255,255,255,${.10*b.depth})`;
+      ctx.lineWidth = devicePixelRatio;
+      ctx.beginPath();
+      ctx.arc(px, py, b.r*.92, -Math.PI*.8, -Math.PI*.2);
+      ctx.stroke();
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ── reveal on scroll ── */
+const io = new IntersectionObserver(entries => {
+  for (const e of entries) if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
 </html>
